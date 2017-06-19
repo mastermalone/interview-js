@@ -1,0 +1,27 @@
+body {
+  font-family: Arial;
+}
+
+.loop-list {
+  overflow: hidden;
+  margin: 10px 0px;
+  clear: both;
+  padding:0px;
+  border: solid 5px #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #cccccc;
+  background: #ccc;
+}
+
+.loop-list li {
+  display: inline-block;
+  padding: 10px 15px;
+  font-weight: bold;
+  color: #fff;
+  border-right: solid 1px #fff;
+  cursor: pointer;
+}
+
+.loop-list li:hover {
+  background: #666666;
+}
