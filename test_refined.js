@@ -523,6 +523,39 @@ console.log('fullNameValue from global variable: ', fullNameVar());
  * Ask the person to write a function that takes a number and shows any number divisible by
  * 3, 5 or 5x3
  */
+
+(function reverseStringIife() {
+  'use strict';
+  
+  var reversString = function reverseString(str) {
+    var reversedStr = '';
+    console.log('REVERSE STRING:');
+    for (var i = str.length; i > 0; i--) {
+      reversedStr += str[i-1];
+    }
+    console.log(reversedStr);
+  };
+  reversString('Hello are you happy, people?');
+}());
+
+(function stringReversIife2() {
+  'use strict';
+  
+  var reverseString2 = function reverseString2(str) {
+    var strArr = str.split('');
+    var reversedString = [];
+    var completeReversal = '';
+    
+    for (var i = strArr.length; i > 0; i--) {
+      reversedString.push(strArr[i-1]);
+    }
+    completeReversal = reversedString.join('');
+    console.log('REVERSE STrING 2:', completeReversal);
+  };
+  
+  reverseString2('This better get reversed or else!');
+}());
+
 (function fixBuzz() {
   'use strict';
   
@@ -590,6 +623,25 @@ console.log('fullNameValue from global variable: ', fullNameVar());
     }
   };
   console.log('Reversed Array', ArrayReversal.reverse(arrayToReverse));
+}());
+
+
+(function dupiife() {
+  'use strict';
+  
+  var duplicates =  ['Tom', 'Jerry', 'Popeye', 'Bluto', 'Tom', 'Jerry'];
+  var dupContainer = {};
+  var dupArray = [];
+  
+  duplicates.forEach(function mapIt(item, idx, array) {
+    if (!dupContainer[item]) {
+      dupContainer[item] =  array[idx];
+    }else {
+      dupArray.push(item);
+    }
+  });
+  console.log('HERE IS THE OBJECT CONTAINER:', dupContainer);
+  console.log('HERE ARE THE DUPLICATES:', dupArray);
 }());
 
 /* 
@@ -750,5 +802,34 @@ console.log('fullNameValue from global variable: ', fullNameVar());
   };
   
   mapit(text);
+}());
+
+/*
+ * ES6
+ */
+
+(function iifes6() {
+  'use strict';
+   
+  let calculateMonthlyPayment = function calculateMonthlyPayment(config) {
+    console.log('HELLO YOU', typeof config);
+     let monthlyRate = 0;
+    if (typeof config !== 'object') {
+      throw new Error('Hey, you need to use an object');
+      return;
+    }
+    if (config.rate) {
+      let monthlyRate = config.rate / 100/ 12;
+    }
+    let monthlyPayment = (config.principal*monthlyRate) / (1 - (Math.pow(1/(1 + monthlyRate), config.years * 12)));
+    console.log('MONTHLY PAYMENT');
+    return monthlyPayment;
+  };
+  
+  calculateMonthlyPayment({
+    principal: 1500,
+    years: 30,
+    rate: 4.5
+  });
 }());
 
